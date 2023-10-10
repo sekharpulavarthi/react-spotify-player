@@ -38,13 +38,17 @@ export class HomeRouteStore {
       this.constraint = constraints.success;
       this.responseStatus = response.responseStatus;
       this.responseData = new HomeRouteModels(response);
-      console.log(this.responseData, "sdfgh");
     }
   };
 
   fetchHomeRouteEditorsData = async (): Promise<void> => {
     const response = await this.serviceApi.editorsPicksServiceAPI();
-    console.log(response);
+    this.constraint = constraints.loading;
+    this.updateResponseData(response);
+  };
+
+  fetchHomeRouteNewReleasesData = async (): Promise<void> => {
+    const response = await this.serviceApi.newReleasesServiceAPI();
     this.constraint = constraints.loading;
     this.updateResponseData(response);
   };

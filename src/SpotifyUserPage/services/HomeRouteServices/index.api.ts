@@ -17,13 +17,27 @@ export class HomeRouteServiceAPI implements HomeServiceType {
         }
 
         const timeStamp = moment(new Date()).format('YYYY-MM-DDTHH:00:00')
-        // console.log(timeStamp)
-        // const countryResponse = await fetch('https://api.spotify.com/v1/me', options)
-
-        // const data1 = await countryResponse.json()
-        // console.log(data1)
-
+        
         const response = await fetch(`https://api.spotify.com/v1/browse/featured-playlists?country=IN&timestamp=${timeStamp}`, options)
+        
+        const data = await response.json()
+        
+        return {
+            ...data,
+            responseStatus: response.ok,
+        }
+    }
+
+    newReleasesServiceAPI = async(): Promise<HomeRouteFetchedResponseTypes> => {
+        
+        const options = {
+            method:"GET",
+            headers: {
+                Authorization: `Bearer ${getJwtToken()}`
+            }
+        }
+
+        const response = await fetch(`https://api.spotify.com/v1/browse/new-releases?country=IN`, options)
         
         const data = await response.json()
         
