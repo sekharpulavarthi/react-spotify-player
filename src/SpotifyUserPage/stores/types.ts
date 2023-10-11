@@ -117,3 +117,94 @@ export interface HomeRouteSongModelObjTypes {
     },
     responseStatus: boolean;
 }
+
+
+export interface HomeRouteNewReleasesImagesTypes {
+    height : null,
+    url : string,
+    width : null
+}
+
+export interface HomeRouteNewReleasesArtistsArrayTypes {
+    external_urls : string,
+    href : string,
+    id : string,
+    name: string,
+    type: string,
+    uri: string
+}
+
+
+export interface HomeRouteNewReleasesSongModelFetchedTypes {
+    album_type : string,
+    artists: Array<HomeRouteNewReleasesArtistsArrayTypes>
+    available_markets : Array<string>
+    external_urls : {
+        spotify : string
+    },
+    href : string,
+    id : string,
+    images : Array<HomeRouteNewReleasesImagesTypes>,
+    name : string,
+    release_date: string,
+    release_date_precision: string,
+    total_tracks: number,
+    type : string,
+    uri : string
+}
+
+
+export interface HomeRouteFetchedNewReleasesResponseTypes {
+    albums : {
+        href : string,
+        items : Array<HomeRouteNewReleasesSongModelFetchedTypes>,
+        limit : number,
+        next : null,
+        offset : number,
+        previous : null,
+        total : number
+    },
+    response_status: boolean;
+}
+
+
+export interface HomeRouteNewReleasesArtistsArrayObjTypes {
+    externalUrls : string,
+    href : string,
+    id : string,
+    name: string,
+    type: string,
+    uri: string
+}
+
+
+export interface HomeRouteNewReleasesSongModelObjTypes {
+    albumType : string,
+    artists: Array<HomeRouteNewReleasesArtistsArrayObjTypes>
+    availableMarkets : Array<string>
+    externalUrls : {
+        spotify : string
+    },
+    href : string,
+    id : string,
+    images : Array<HomeRouteNewReleasesImagesTypes>,
+    name : string,
+    releaseDate: string,
+    releaseDatePrecision: string,
+    totalTracks: number,
+    type : string
+}
+
+
+export interface HomeRouteNewReleasesResponseObjTypes {
+    albums : {
+        href : string,
+        items : Array<HomeRouteNewReleasesSongModelFetchedTypes>,
+        limit : number,
+        next : null,
+        offset : number,
+        previous : null,
+        total : number
+    },
+    responseStatus: boolean;
+}

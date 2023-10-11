@@ -50,6 +50,7 @@ export class HomeRouteStore {
   fetchHomeRouteNewReleasesData = async (): Promise<void> => {
     const response = await this.serviceApi.newReleasesServiceAPI();
     this.constraint = constraints.loading;
+    console.log(response, "response")
     this.updateResponseData(response);
   };
 }
