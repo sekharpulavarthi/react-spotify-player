@@ -1,20 +1,27 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import LoginForm from './components/LoginForm'
-import HomeRoute from './SpotifyUserPage/routes/HomeRoute'
-import ProtectedRoute from './Common/components/ProtectedRoute'
-import './App.css'
-import { HomeRouteHook } from './SpotifyUserPage/hooks/useEditorsPicksHooks';
+import LoginForm from "./components/LoginForm";
+import HomeRoute from "./SpotifyUserPage/routes/HomeRoute";
+import ProtectedRoute from "./Common/components/ProtectedRoute";
+import "./App.css";
+import { HomeRouteHook } from "./SpotifyUserPage/hooks/useEditorsPicksHooks";
+import { HomeRouteNewReleasesHook } from "./SpotifyUserPage/hooks/useHomeNewReleasesHook";
+import { HomeRouteGenresMoodsHook } from "./SpotifyUserPage/hooks/useGenresMoodsHook";
 
 const App = (): JSX.Element => (
   <BrowserRouter>
-  <HomeRouteHook>
-    <Switch>
-      <Route exact path="/login" component={LoginForm} />
-      <ProtectedRoute exact path = "/" component={HomeRoute}/>
-    </Switch>
+    <HomeRouteHook>
+      <HomeRouteNewReleasesHook>
+        <HomeRouteGenresMoodsHook>
+          <Switch>
+            <Route exact path="/login" component={LoginForm} />
+            <ProtectedRoute exact path="/" component={HomeRoute} />
+            <ProtectedRoute exact path="/playlists/:id" component={HomeRoute} />
+          </Switch>
+        </HomeRouteGenresMoodsHook>
+      </HomeRouteNewReleasesHook>
     </HomeRouteHook>
-    </BrowserRouter>
-)
+  </BrowserRouter>
+);
 
-export default App
+export default App;

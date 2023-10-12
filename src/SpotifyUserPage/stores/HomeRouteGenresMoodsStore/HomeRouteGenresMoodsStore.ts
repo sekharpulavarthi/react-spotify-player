@@ -3,15 +3,15 @@ import { makeAutoObservable } from "mobx";
 import { constraints } from "../../../Common/constants";
 import { HomeServiceType } from "../../services/HomeRouteServices";
 import {
-  HomeRouteFetchedNewReleasesResponseTypes,
-  HomeRouteNewReleasesResponseObjTypes,
+  HomeRouteGenresMoodsResponseObjTypes,
+  HomeRouteGenresMoodsResponseFetchedTypes,
 } from "../types";
-import { HomeRouteNewReleasesModel } from "./models/HomeRouteNewReleasesModel";
+import { HomeRouteGenresMoodsModel } from "./models/HomeRouteGenresMoodsModel";
 
-export class HomeRouteNewReleasesStore {
+export class HomeRouteGenresMoodsStore {
   responseStatus: boolean;
   constraint: string;
-  responseData: HomeRouteNewReleasesResponseObjTypes;
+  responseData: HomeRouteGenresMoodsResponseObjTypes;
   serviceApi: HomeServiceType;
 
   constructor(serviceApi: HomeServiceType) {
@@ -19,7 +19,7 @@ export class HomeRouteNewReleasesStore {
     this.responseStatus = false;
     this.constraint = constraints.initial;
     this.responseData = {
-      albums: {
+      categories: {
         href: "",
         items: [],
         total: 0,
@@ -30,18 +30,17 @@ export class HomeRouteNewReleasesStore {
   }
 
   updateResponseData = (
-    response: HomeRouteFetchedNewReleasesResponseTypes
+    response: HomeRouteGenresMoodsResponseFetchedTypes
   ): void => {
     if (response.responseStatus) {
       this.constraint = constraints.success;
-
       this.responseStatus = response.responseStatus;
-      this.responseData = new HomeRouteNewReleasesModel(response);
+      this.responseData = new HomeRouteGenresMoodsModel(response);
     }
   };
 
-  fetchHomeRouteNewReleasesData = async (): Promise<void> => {
-    const response = await this.serviceApi.newReleasesServiceAPI();
+  fetchHomeGenresMoodsData = async (): Promise<void> => {
+    const response = await this.serviceApi.genresMoodsServiceAPI();
     this.constraint = constraints.loading;
 
     this.updateResponseData(response);
