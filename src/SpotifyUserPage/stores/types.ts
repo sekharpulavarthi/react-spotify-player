@@ -332,3 +332,8 @@ export interface EditorsPicksPlayListsFetchedResposeTypes {
   uri: string;
 }
 
+export interface EditorsPicksPlayListsResposeObjTypes {
+  images: Array<HomeRouteGenresMoodsImagesTypes>;
+  name: string;
+  responseStatus: boolean;
+}

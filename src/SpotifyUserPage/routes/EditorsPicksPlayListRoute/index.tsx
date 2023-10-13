@@ -1,3 +1,3 @@
-import EditorsPicksPlayListRoute from "./EditorsPicksPlayListRoute";
+import { EditorsPicksPlayListRoute } from "./EditorsPicksPlayListRoute";
 
 export default EditorsPicksPlayListRoute;
