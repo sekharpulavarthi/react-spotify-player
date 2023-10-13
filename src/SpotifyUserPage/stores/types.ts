@@ -337,3 +337,7 @@ export interface EditorsPicksPlayListsResposeObjTypes {
   name: string;
   responseStatus: boolean;
 }
+
+export interface MatchParamsTypes {
+  id: string;
+}

@@ -7,6 +7,7 @@ import "./App.css";
 import { HomeRouteHook } from "./SpotifyUserPage/hooks/useEditorsPicksHooks";
 import { HomeRouteNewReleasesHook } from "./SpotifyUserPage/hooks/useHomeNewReleasesHook";
 import { HomeRouteGenresMoodsHook } from "./SpotifyUserPage/hooks/useGenresMoodsHook";
+import EditorsPicksPlayListRoute from "./SpotifyUserPage/routes/EditorsPicksPlayListRoute";
 
 const App = (): JSX.Element => (
   <BrowserRouter>
@@ -16,7 +17,11 @@ const App = (): JSX.Element => (
           <Switch>
             <Route exact path="/login" component={LoginForm} />
             <ProtectedRoute exact path="/" component={HomeRoute} />
-            <ProtectedRoute exact path="/playlists/:id" component={HomeRoute} />
+            <ProtectedRoute
+              exact
+              path="/playlists/:id"
+              component={EditorsPicksPlayListRoute}
+            />
           </Switch>
         </HomeRouteGenresMoodsHook>
       </HomeRouteNewReleasesHook>
