@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import { constraints } from "../../../Common/constants";
 import Loading from "../../../Common/components/Loading";
 import Failure from "../../../Common/components/Failure";
-import EditorsPicksView from "../../components/EditorsPicksView";
+import EditorsPicksView from "../../components/HomeRouteEditorsPicksView";
 import NewReleasesView from "../../components/NewReleasesView";
 import GenresMoodsView from "../../components/GenresMoodsView";
 

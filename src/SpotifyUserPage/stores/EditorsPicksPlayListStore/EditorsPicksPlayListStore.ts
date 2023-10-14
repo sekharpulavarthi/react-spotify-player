@@ -5,6 +5,7 @@ import {
   EditorsPicksPlayListsFetchedResposeTypes,
   EditorsPicksPlayListsResposeObjTypes,
 } from "../types";
+import { EditorsPicksPlayListHeader } from "./models/EditorsPicksPlayListHeader";
 
 export class EditorsPicksPlayListStore {
   responseStatus: boolean;
@@ -18,26 +19,28 @@ export class EditorsPicksPlayListStore {
     this.constraint = constraints.initial;
 
     this.responseData = {
-      images: [],
+      image: "",
       name: "",
+      items:[],
       responseStatus: false,
     };
     this.serviceApi = serviceApi;
   }
 
-  // updateResponseData = (
-  //   response: EditorsPicksPlayListsFetchedResposeTypes
-  // ): void => {
-  //   if (response.responseStatus) {
-  //     this.constraint = constraints.success;
-  //     this.responseStatus = response.responseStatus;
-  //   }
-  // };
+  updateResponseData = (
+    response: EditorsPicksPlayListsFetchedResposeTypes
+  ): void => {
+    if (response.responseStatus) {
+      this.constraint = constraints.success;
+      this.responseStatus = response.responseStatus;
+      this.responseData = new EditorsPicksPlayListHeader(response);
+    }
+  };
 
   fetchEditorsPicksPlayListData = async (id: string): Promise<void> => {
     const response = await this.serviceApi.editorsPicksPlayListServiceAPI(id);
     console.log(response);
-    // this.constraint = constraints.loading;
-    // this.updateResponseData(response);
+    this.constraint = constraints.loading;
+    this.updateResponseData(response);
   };
 }

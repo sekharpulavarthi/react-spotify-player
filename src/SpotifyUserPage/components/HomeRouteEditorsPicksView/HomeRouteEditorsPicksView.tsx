@@ -5,7 +5,7 @@ import {
   EditorsPicksViewContainer,
 } from "./styledComponents";
 
-export const EditorsPicksView = (props: any) => {
+export const HomeRouteEditorsPicksView = (props: any) => {
   const { editorsPicksData } = props;
   const editorsPickslist = editorsPicksData.playlists.items;
   return (

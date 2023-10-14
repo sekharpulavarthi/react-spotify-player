@@ -5,6 +5,7 @@ import Loading from "../../../Common/components/Loading";
 import Failure from "../../../Common/components/Failure";
 import { useEditorsPicksPlayListHook } from "../../hooks/useEditorsPicksPlayListHook";
 import { MatchParamsTypes } from "../../stores/types";
+import EditorsPicksPlayListView from "../../components/EditorsPicksPlayListView";
 import { RouteComponentProps } from "react-router-dom";
 
 export const EditorsPicksPlayListRoute = observer(
@@ -29,7 +30,11 @@ export const EditorsPicksPlayListRoute = observer(
 
     const renderEditorsPicksPlayListSuccessView = () => {
       const { responseData } = editorsPicksPlayListHook;
-      return <h1> qwerty</h1>;
+      return (
+        <EditorsPicksPlayListView
+          editorsPicksPlayListViewDetails={responseData}
+        />
+      );
     };
 
     const renderEditorsPicksPlayListView = () => {

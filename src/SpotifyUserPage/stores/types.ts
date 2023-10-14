@@ -330,12 +330,21 @@ export interface EditorsPicksPlayListsFetchedResposeTypes {
   };
   type: string;
   uri: string;
+  responseStatus: boolean;
+}
+
+export interface EditorsPicksSongItemDetails {
+  track: string;
+  album: string;
+  artist: string;
+  addedAt: string;
 }
 
 export interface EditorsPicksPlayListsResposeObjTypes {
-  images: Array<HomeRouteGenresMoodsImagesTypes>;
+  image: string;
   name: string;
   responseStatus: boolean;
+  items: Array<EditorsPicksSongItemDetails>;
 }
 
 export interface MatchParamsTypes {
