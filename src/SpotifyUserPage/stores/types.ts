@@ -338,6 +338,8 @@ export interface EditorsPicksSongItemDetails {
   album: string;
   artist: string;
   addedAt: string;
+  previewUrl: string;
+  id: string;
 }
 
 export interface EditorsPicksPlayListsResposeObjTypes {

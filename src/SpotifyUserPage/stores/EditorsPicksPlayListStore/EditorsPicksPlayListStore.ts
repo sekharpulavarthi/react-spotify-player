@@ -4,6 +4,7 @@ import { EditorsPicksPlayListServiceType } from "../../services/EditorsPicksPlay
 import {
   EditorsPicksPlayListsFetchedResposeTypes,
   EditorsPicksPlayListsResposeObjTypes,
+  EditorsPicksSongItemDetails,
 } from "../types";
 import { EditorsPicksPlayListHeader } from "./models/EditorsPicksPlayListHeader";
 
@@ -12,6 +13,7 @@ export class EditorsPicksPlayListStore {
   constraint: string;
   responseData: EditorsPicksPlayListsResposeObjTypes;
   serviceApi: EditorsPicksPlayListServiceType;
+  resultObj: EditorsPicksSongItemDetails;
 
   constructor(serviceApi: EditorsPicksPlayListServiceType) {
     makeAutoObservable(this);
@@ -21,11 +23,24 @@ export class EditorsPicksPlayListStore {
     this.responseData = {
       image: "",
       name: "",
-      items:[],
+      items: [],
       responseStatus: false,
     };
     this.serviceApi = serviceApi;
+    this.resultObj = {
+      track: "",
+      album: "",
+      artist: "",
+      addedAt: "",
+      previewUrl: "",
+      id: "",
+    };
   }
+
+  getSongItemData = (id: string) => {
+    const resultObj = this.responseData.items.find((item) => item.id === id);
+    return resultObj;
+  };
 
   updateResponseData = (
     response: EditorsPicksPlayListsFetchedResposeTypes

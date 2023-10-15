@@ -8,6 +8,8 @@ import {
 
 import { getJwtToken } from "../../../Common/utils/StorageUtils";
 
+
+
 export class HomeRouteServiceAPI implements HomeServiceType {
   editorsPicksServiceAPI = async (): Promise<HomeRouteFetchedResponseTypes> => {
     const options = {

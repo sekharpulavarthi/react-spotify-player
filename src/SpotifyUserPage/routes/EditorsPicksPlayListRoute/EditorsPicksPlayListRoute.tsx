@@ -29,10 +29,11 @@ export const EditorsPicksPlayListRoute = observer(
     const renderFailureView = () => <Failure />;
 
     const renderEditorsPicksPlayListSuccessView = () => {
-      const { responseData } = editorsPicksPlayListHook;
+      const { responseData, getSongItemData } = editorsPicksPlayListHook;
       return (
         <EditorsPicksPlayListView
           editorsPicksPlayListViewDetails={responseData}
+          getSongItemData={getSongItemData}
         />
       );
     };
